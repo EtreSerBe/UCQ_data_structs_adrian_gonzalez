@@ -11,8 +11,12 @@
 // El código inicia a partir de la función "main"
 
 
-
-
+// Definición:
+// Generalmente se lleva a cabo en los archivos .cpp (c plus plus, o archivos de fuente)
+int myFunction()
+{
+    return 0;
+}
 
 
 // Nótese que el tipo de retorno es "int", pues devuelve un entero que representa el código
@@ -20,9 +24,60 @@
 // En Java, main es de tipo "void", pues no retorna ningún valor.
 int main()
 {
-    std::cout << "Hello World!\n";
+    // Declaración
+    int myDeclaration;
+    // Generalmente en los archivos .h (header)
 
-    std::cout << "Hello World!\n";
+    // Inicialización:
+    myDeclaration = 5;
+
+
+
+     int myInt = 5;
+
+    // int j; // No está inicializado, no nos deja usarlo el compilador, traería basura.
+
+    // c de console y out de salida: salida a consola
+    // std::cout << i << '\n';
+
+    // std::cout << j << '\n';
+
+    int myArray[5] = { 0, 11, 22, 337, 45 };
+
+    for (int i = 0; i < 5; i++)
+    {
+        std::cout << myArray[i] << '\n';
+    }
+    
+    std::cout << &myInt << '\n';
+
+    int* myAddress = &myInt;
+
+    std::cout << "Dirección de memoria a que apunta MyAddress: " << myAddress << '\n';
+    std::cout <<  "Valor de la variable a la que apunta MyAddress: " << *myAddress << '\n';
+
+    std::cout << &myAddress << '\n';
+
+    int** myAddressAddress = &myAddress;
+
+    // myArray[iésimo] ~ *
+
+    // myTable[][] ~ []* ~ **
+
+    // c de consola, in de entrada: entrada a consola (cin)
+
+    int* myArrayPtr = &myArray[0];
+
+    for (int i = 0; i < 5; i++)
+    {
+        std::cout <<"Dirección de memoria de myArray[" <<i<<"] : " << myArrayPtr << '\n';
+
+        std::cout << "Valor del objeto de myArray[" << i << "] : " << *myArrayPtr << '\n';
+
+        ++myArrayPtr;
+        ++myArrayPtr;
+    }
+
     // Anteriormente, se cerraba la consola en cuenta terminaba de ejecutarse la aplicación.
     // Ahora ya no, lo cual es bastante útil.
 
