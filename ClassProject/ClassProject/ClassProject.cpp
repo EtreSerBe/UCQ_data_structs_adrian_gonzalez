@@ -11,12 +11,17 @@
 // El código inicia a partir de la función "main"
 
 
+
+
+
+
 // Nótese que el tipo de retorno es "int", pues devuelve un entero que representa el código
 // de cómo terminó el programa, siendo 0 un término exitoso.
 // En Java, main es de tipo "void", pues no retorna ningún valor.
 int main()
 {
     std::cout << "Hello World!\n";
+
 
     // Anteriormente, se cerraba la consola en cuenta terminaba de ejecutarse la aplicación.
     // Ahora ya no, lo cual es bastante útil.
