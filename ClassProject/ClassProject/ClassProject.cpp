@@ -22,7 +22,7 @@ int main()
 {
     std::cout << "Hello World!\n";
 
-
+    std::cout << "Hello World!\n";
     // Anteriormente, se cerraba la consola en cuenta terminaba de ejecutarse la aplicación.
     // Ahora ya no, lo cual es bastante útil.
 
