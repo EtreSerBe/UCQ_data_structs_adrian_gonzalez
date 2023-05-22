@@ -7,9 +7,20 @@
 // o output
 // stream
 
+#define MY_NULL 0
+// #define TV NVIDIA
+
+// #if TV == NVIDIA
+// hacen esto porque es tv nvidia
+
+// #elif TV == AMD
+// hacer esto porque es tv AMD-.
+
 // A diferencia de Java, no es necesaria una clase para ejecutar código.
 // El código inicia a partir de la función "main"
 
+// Ya no es recomendado a menos que realmente vayas a usar mucho del namespace
+// using namespace std;
 
 // Definición:
 // Generalmente se lleva a cabo en los archivos .cpp (c plus plus, o archivos de fuente)
@@ -19,6 +30,43 @@ int myFunction()
 }
 
 
+class myClass 
+{
+public:
+    myClass()
+    {
+        x = 0;
+        y = 0;
+    }
+
+    int x;
+    int y;
+};
+
+class Triangle
+{
+public:
+    Triangle()
+    {
+        Base = 0.0f;
+        Height = 0.0f;
+    }
+
+    Triangle(float in_base, float in_height)
+    {
+        Base = in_base;
+        Height = in_height;
+    }
+
+    float Base;
+    float Height;
+
+    float GetArea()
+    {
+        return Base * Height / 2.0f;
+    }
+};
+
 // Nótese que el tipo de retorno es "int", pues devuelve un entero que representa el código
 // de cómo terminó el programa, siendo 0 un término exitoso.
 // En Java, main es de tipo "void", pues no retorna ningún valor.
@@ -26,14 +74,59 @@ int main()
 {
     // Declaración
     int myDeclaration;
+
+    // SCOPE
+
     // Generalmente en los archivos .h (header)
 
     // Inicialización:
-    myDeclaration = 5;
+    myDeclaration = 0;
+
+    Triangle example = Triangle(2.0f, 5.0f);
+    // example.Base = 2.0f;
+    // example.Height = 5.0f;
+    std::cout << example.GetArea() << '\n';
+
+    char nullChar = NULL;
+    int nullInt = NULL;
+    bool nullBool = MY_NULL; // bool nullBool = 0;
 
 
+    int x = 0;
 
-     int myInt = 5;
+    if (x == NULL)
+    {
+        std::cout << "sí entré" << '\n';
+    }
+
+    //if (x == 0)
+
+    char nullCharPtr = NULL;
+    char *nullptrCharPtr = nullptr;
+
+    int BigArray[500][500] = {0};
+
+    // int newInt = new int;  // este no es posible
+    int myIntInstance = 4;
+    int* newInt = &myIntInstance;
+    *newInt = 5;
+    std::cout << *newInt << '\n';
+    // delete newInt;
+    // std::cout << *newInt << '\n';
+
+    int* Copion1 = newInt, * Copion2 = newInt;
+
+    *newInt = 6;
+
+    int* BigArrayPtr = new int [20000000];
+
+    for (int i = 0; i < 100; i++)
+    {
+        delete [] BigArrayPtr;
+        BigArrayPtr = new int[200000000];
+
+    }
+    int myInt = 5;
 
     // int j; // No está inicializado, no nos deja usarlo el compilador, traería basura.
 
