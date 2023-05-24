@@ -7,6 +7,8 @@
 // o output
 // stream
 
+#include "Array.h"
+
 #define MY_NULL 0
 // #define TV NVIDIA
 
@@ -67,18 +69,12 @@ public:
     }
 };
 
-// Nótese que el tipo de retorno es "int", pues devuelve un entero que representa el código
-// de cómo terminó el programa, siendo 0 un término exitoso.
-// En Java, main es de tipo "void", pues no retorna ningún valor.
-int main()
+void ClassesBeforeMay24()
 {
     // Declaración
     int myDeclaration;
-
     // SCOPE
-
     // Generalmente en los archivos .h (header)
-
     // Inicialización:
     myDeclaration = 0;
 
@@ -91,7 +87,6 @@ int main()
     int nullInt = NULL;
     bool nullBool = MY_NULL; // bool nullBool = 0;
 
-
     int x = 0;
 
     if (x == NULL)
@@ -102,9 +97,9 @@ int main()
     //if (x == 0)
 
     char nullCharPtr = NULL;
-    char *nullptrCharPtr = nullptr;
+    char* nullptrCharPtr = nullptr;
 
-    int BigArray[500][500] = {0};
+    int BigArray[500][500] = { 0 };
 
     // int newInt = new int;  // este no es posible
     int myIntInstance = 4;
@@ -118,21 +113,19 @@ int main()
 
     *newInt = 6;
 
-    int* BigArrayPtr = new int [20000000];
+    int* BigArrayPtr = new int[20000000];
 
     for (int i = 0; i < 100; i++)
     {
-        delete [] BigArrayPtr;
+        delete[] BigArrayPtr;
         BigArrayPtr = new int[200000000];
 
     }
     int myInt = 5;
 
     // int j; // No está inicializado, no nos deja usarlo el compilador, traería basura.
-
     // c de console y out de salida: salida a consola
     // std::cout << i << '\n';
-
     // std::cout << j << '\n';
 
     int myArray[5] = { 0, 11, 22, 337, 45 };
@@ -141,13 +134,13 @@ int main()
     {
         std::cout << myArray[i] << '\n';
     }
-    
+
     std::cout << &myInt << '\n';
 
     int* myAddress = &myInt;
 
     std::cout << "Dirección de memoria a que apunta MyAddress: " << myAddress << '\n';
-    std::cout <<  "Valor de la variable a la que apunta MyAddress: " << *myAddress << '\n';
+    std::cout << "Valor de la variable a la que apunta MyAddress: " << *myAddress << '\n';
 
     std::cout << &myAddress << '\n';
 
@@ -163,13 +156,70 @@ int main()
 
     for (int i = 0; i < 5; i++)
     {
-        std::cout <<"Dirección de memoria de myArray[" <<i<<"] : " << myArrayPtr << '\n';
+        std::cout << "Dirección de memoria de myArray[" << i << "] : " << myArrayPtr << '\n';
 
         std::cout << "Valor del objeto de myArray[" << i << "] : " << *myArrayPtr << '\n';
 
         ++myArrayPtr;
         ++myArrayPtr;
     }
+}
+
+
+// función por valor
+// se genera una copia en una dirección de memoria distinta a la de la variable pasada a la función
+int PlusOne(int a)
+{
+    a = a + 1;
+    return a;
+}
+
+// función por referencia 
+// es tal cual a la variable que pases, no a una copia
+int PlusOneRef(int &a)
+{
+    a = a + 1;
+    return a;
+}
+
+void ParametrosPorValorYPorReferencia()
+{
+    int myInt = 0;
+
+    int PlusOneResult = PlusOne(myInt);
+
+    std::cout << "myInt: " << myInt << '\n';  // 0
+
+    std::cout << "PlusOneResult: " << PlusOneResult << '\n';  // 1
+
+    int PlusOneRefResult = PlusOneRef(myInt);
+
+    std::cout << "myInt: " << myInt << '\n'; // 1
+
+    std::cout << "PlusOneRefResult: " << PlusOneRefResult << '\n'; // 1
+
+    PlusOneRefResult = PlusOneRef(myInt);
+
+    std::cout << "myInt: " << myInt << '\n';  // 2
+
+    std::cout << "PlusOneRefResult: " << PlusOneRefResult << '\n'; // 2
+
+
+    PlusOneResult = PlusOne(myInt);
+
+    std::cout << "myInt: " << myInt << '\n';  // 2
+
+    std::cout << "PlusOneResult: " << PlusOneResult << '\n';  // 3
+}
+
+
+// Nótese que el tipo de retorno es "int", pues devuelve un entero que representa el código
+// de cómo terminó el programa, siendo 0 un término exitoso.
+// En Java, main es de tipo "void", pues no retorna ningún valor.
+int main()
+{
+   
+
 
     // Anteriormente, se cerraba la consola en cuenta terminaba de ejecutarse la aplicación.
     // Ahora ya no, lo cual es bastante útil.
