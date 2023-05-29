@@ -8,6 +8,9 @@
 // stream
 
 #include "Array.h"
+// #include "../include/Array.h"
+
+
 
 #define MY_NULL 0
 // #define TV NVIDIA
@@ -218,16 +221,30 @@ void ParametrosPorValorYPorReferencia()
 // En Java, main es de tipo "void", pues no retorna ningún valor.
 int main()
 {
-   
+    RawArray test = RawArray(10);
+    
+    // Si ya pedimos los 5 ints de memoria dinámica, hay que asignarles un valor
+    test.Init(100); // como el valor por defecto es 0, todos los ints serán 0.
+
+    // comprobar que se les asignó el valor.
+    test.Print();
+
+    // Hay que liberar memoria del RawArray
+    // test.~RawArray();
+
+    return 0;
+}
 
 
-    // Anteriormente, se cerraba la consola en cuenta terminaba de ejecutarse la aplicación.
+
+// Anteriormente, se cerraba la consola en cuenta terminaba de ejecutarse la aplicación.
     // Ahora ya no, lo cual es bastante útil.
 
     // Si bien ya no es indispensable, es buena práctica poner este return 0,
     // que indica que el programa finalizó con el código 0 (correcto).
-    return 0;
-}
+
+
+
 
 // Ejecutar programa: Ctrl + F5 o menú Depurar > Iniciar sin depurar
 // Depurar programa: F5 o menú Depurar > Iniciar depuración

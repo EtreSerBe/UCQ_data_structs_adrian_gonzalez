@@ -1,5 +1,6 @@
 #pragma once
 
+
 // Clase para entender la base de cómo hacer nuestras estructuras de datos
 // específicamente la vamos a hacer para ints
 // no podemos usar los [] nosotros, porque lo que queremos es simular ese comportamiento a través del 
@@ -8,6 +9,8 @@ class RawArray
 {
 public:
 	RawArray(int in_Size);
+
+	~RawArray();
 
 	void Init(int InitialValue = 0);
 
@@ -24,7 +27,6 @@ public:
 
 	// int myArray[5] = {0};
 	// x1, x2, x3, x4, x5
-
 	/*
 	x1 -> 0-4,
 	x2 -> 5-8,
@@ -32,7 +34,6 @@ public:
 	x4 -> 13-16,
 	x5 -> 17-20
 	*/
-
 	// myArray[3] = 90;
 
 };
