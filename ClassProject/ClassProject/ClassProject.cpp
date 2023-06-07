@@ -8,6 +8,7 @@
 // stream
 
 #include "Array.h"
+#include "TArray.h"
 // #include "../include/Array.h"
 
 
@@ -70,6 +71,20 @@ public:
     {
         return Base * Height / 2.0f;
     }
+
+    friend bool operator < (Triangle a, Triangle b)
+    {
+        return a.GetArea() < b.GetArea();
+    }
+
+    friend bool operator > (Triangle a, Triangle b)
+    {
+        return a.GetArea() > b.GetArea();
+        // return b < a;
+    }
+
+
+
 };
 
 void ClassesBeforeMay24()
@@ -215,22 +230,65 @@ void ParametrosPorValorYPorReferencia()
     std::cout << "PlusOneResult: " << PlusOneResult << '\n';  // 3
 }
 
+//template <typename T1, typename T2>
+//int Suma(T1 x, T2 b)
+//{
+//    
+//}
+
+
 
 // Nótese que el tipo de retorno es "int", pues devuelve un entero que representa el código
 // de cómo terminó el programa, siendo 0 un término exitoso.
 // En Java, main es de tipo "void", pues no retorna ningún valor.
 int main()
 {
-    RawArray test = RawArray(10);
+    TArray<float> myTArray = TArray<float>(10);
+    myTArray.Init(12.7f);
+    myTArray.Print();
+
+    int myInt = 5 + 8.3;
+
+
+    RawArray test = RawArray(3);
     
     // Si ya pedimos los 5 ints de memoria dinámica, hay que asignarles un valor
-    test.Init(100); // como el valor por defecto es 0, todos los ints serán 0.
+    test.Init(0); // como el valor por defecto es 0, todos los ints serán 0.
 
     // comprobar que se les asignó el valor.
     test.Print();
 
+    // Nosotros tenemos [0, 0, 0]
+
+    test.AddElement(3);
+
+    // Después del addElement, nuestro arreglo se debería ver así [0, 0, 0, 3]
+    test.Print();
+
+    /* // si Size fuera 1000, no está tan descabellado.,
+    // pero 1000*1000 son 1000000...
+    // Size iteraciones, con Size operaciones cada una, por lo tanto, Size*Size operaciones.
+    for (int i = 0; i < test.Size; i++)
+    {
+        test.RemoveLastElement(); // Size operaciones
+    }
+    test.~RawArray(); // lo haría en una llamada a delete*/
+
+    test.RemoveLastElement();
+    test.RemoveLastElement();
+    test.Print();
+
+    // Remove // size operaciones
+    // add // size operaciones
+    // remove // size operaciones
+    // remove // ...
+    // add
+    // ...
+
+
     // Hay que liberar memoria del RawArray
     // test.~RawArray();
+
 
     return 0;
 }

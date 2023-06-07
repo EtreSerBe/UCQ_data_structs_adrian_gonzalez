@@ -1,6 +1,7 @@
 #pragma once
 
 
+
 // Clase para entender la base de cómo hacer nuestras estructuras de datos
 // específicamente la vamos a hacer para ints
 // no podemos usar los [] nosotros, porque lo que queremos es simular ese comportamiento a través del 
@@ -15,6 +16,27 @@ public:
 	void Init(int InitialValue = 0);
 
 	void Print();
+
+	// Ojo, AddElement lo añade al final.
+	void AddElement(int value);
+
+	void RemoveLastElement();
+
+	static RawArray SumArrays(RawArray A, RawArray B)
+	{
+		RawArray newArray = RawArray(A.Size + B.Size);
+
+		// Falta más código.
+
+		return newArray;
+	}
+
+	//void Asignar(int valor, int posicion);
+
+	/*void Reemplazar(int posicion, int valor)
+	{
+	
+	}*/
 
 	// puntero a la primera dirección de los N enteros continuos en memoria
 	int* InitialElement;  // es decir, es el elemento '0' de un Array[0]
@@ -37,4 +59,5 @@ public:
 	// myArray[3] = 90;
 
 };
+
 
