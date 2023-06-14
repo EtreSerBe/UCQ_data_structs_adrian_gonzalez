@@ -9,6 +9,7 @@
 
 #include "Array.h"
 #include "TArray.h"
+#include "Stack.h"
 // #include "../include/Array.h"
 
 
@@ -243,11 +244,11 @@ void ParametrosPorValorYPorReferencia()
 // En Java, main es de tipo "void", pues no retorna ningún valor.
 int main()
 {
-    TArray<float> myTArray = TArray<float>(10);
-    myTArray.Init(12.7f);
-    myTArray.Print();
+    //TArray<float> myTArray = TArray<float>(10);
+    //myTArray.Init(12.7f);
+    //myTArray.Print();
 
-    int myInt = 5 + 8.3;
+    //int myInt = 5 + 8.3;
 
 
     RawArray test = RawArray(3);
@@ -265,30 +266,45 @@ int main()
     // Después del addElement, nuestro arreglo se debería ver así [0, 0, 0, 3]
     test.Print();
 
-    /* // si Size fuera 1000, no está tan descabellado.,
-    // pero 1000*1000 son 1000000...
-    // Size iteraciones, con Size operaciones cada una, por lo tanto, Size*Size operaciones.
-    for (int i = 0; i < test.Size; i++)
-    {
-        test.RemoveLastElement(); // Size operaciones
-    }
-    test.~RawArray(); // lo haría en una llamada a delete*/
+    // char myChar = 'a';
+    // RawArray OtherArray = RawArray(5);
+    // test.AddElement(OtherArray);
 
-    test.RemoveLastElement();
-    test.RemoveLastElement();
-    test.Print();
+    ///* // si Size fuera 1000, no está tan descabellado.,
+    //// pero 1000*1000 son 1000000...
+    //// Size iteraciones, con Size operaciones cada una, por lo tanto, Size*Size operaciones.
+    //for (int i = 0; i < test.Size; i++)
+    //{
+    //    test.RemoveLastElement(); // Size operaciones
+    //}
+    //test.~RawArray(); // lo haría en una llamada a delete*/
 
-    // Remove // size operaciones
-    // add // size operaciones
-    // remove // size operaciones
-    // remove // ...
-    // add
-    // ...
+    //test.RemoveLastElement();
+    //test.RemoveLastElement();
+    //test.Print();
 
+    //// Remove // size operaciones
+    //// add // size operaciones
+    //// remove // size operaciones
+    //// remove // ...
+    //// add
+    //// ...
 
-    // Hay que liberar memoria del RawArray
-    // test.~RawArray();
+    Stack<char> MyStack = Stack<char>(3);
 
+    // Inicia vacía
+    MyStack.Pop();
+
+    // metemos elementos
+    MyStack.Push('a');
+    MyStack.Push('b');
+    MyStack.Push('c');
+    MyStack.Push('d');  // este va a causar un error de Overflow, porque solo pedimos 3 de Size.
+
+    std::cout << "El tope de la Stack es: " << MyStack.Top() << '\n';
+
+    //// Hay que liberar memoria del RawArray
+    //// test.~RawArray();
 
     return 0;
 }

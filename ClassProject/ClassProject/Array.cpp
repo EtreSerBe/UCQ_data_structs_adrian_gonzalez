@@ -112,3 +112,5 @@ void RawArray::RemoveLastElement()
 
 	delete[] auxPointer;
 }
+
+
