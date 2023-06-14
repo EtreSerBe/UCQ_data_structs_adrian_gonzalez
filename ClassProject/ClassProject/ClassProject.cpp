@@ -291,6 +291,7 @@ int main()
     //// ...
 
     Stack<char> MyStack = Stack<char>(3);
+    // Stack<char> MyStack = Stack<char>(3, false);
 
     // Inicia vacía
     MyStack.Pop();
@@ -300,6 +301,12 @@ int main()
     MyStack.Push('b');
     MyStack.Push('c');
     MyStack.Push('d');  // este va a causar un error de Overflow, porque solo pedimos 3 de Size.
+    MyStack.Push('e');
+    // MyStack. = 100;
+    MyStack.Push('f');
+
+    MyStack.Print();
+
 
     std::cout << "El tope de la Stack es: " << MyStack.Top() << '\n';
 
