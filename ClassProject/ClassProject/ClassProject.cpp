@@ -10,6 +10,8 @@
 #include "Array.h"
 #include "TArray.h"
 #include "Stack.h"
+#include "Queue.h"
+#include "Deque.h"
 // #include "../include/Array.h"
 
 
@@ -252,7 +254,7 @@ int main()
 
 
     RawArray test = RawArray(3);
-    
+
     // Si ya pedimos los 5 ints de memoria dinámica, hay que asignarles un valor
     test.Init(0); // como el valor por defecto es 0, todos los ints serán 0.
 
@@ -309,6 +311,46 @@ int main()
 
 
     std::cout << "El tope de la Stack es: " << MyStack.Top() << '\n';
+
+
+
+
+    // PRUEBAS DE QUEUE.
+    Queue<char> MyQueue = Queue<char>(6);
+    MyQueue.Enqueue('a');
+    MyQueue.Enqueue('b');
+    MyQueue.Enqueue('c');
+    MyQueue.Enqueue('d');
+    MyQueue.Enqueue('e');
+    MyQueue.Enqueue('f');
+
+    if (MyQueue.Full() == true)
+    {
+        std::cout << "la Queue está llena." << '\n';
+    }
+
+    //MyQueue.Enqueue('g');  // aquí va a entrar a incrementar el tamaoñl de la Queue.
+
+    // Después, quitamos un elemento, y metemos otro nuevo, para probar la otra condición de Full()
+    MyQueue.Dequeue();
+    MyQueue.Enqueue('g');
+    MyQueue.Enqueue('h');
+
+    if (MyQueue.Full() == true)
+    {
+        std::cout << "la Queue está llena de nuevo." << '\n';
+    }
+
+
+
+
+    // CÓDIGO PARA PROBAR LA CLASE DEQUE.
+    
+
+
+
+
+
 
     //// Hay que liberar memoria del RawArray
     //// test.~RawArray();

@@ -3,7 +3,7 @@
 #include <iostream>
 
 template <typename T>
-class Queue
+class Deque
 {
 private:
 	// Variables que tiene que tener:
@@ -17,7 +17,7 @@ private:
 	bool _isDynamic;
 
 public:
-	Queue(int size, bool Dynamic=true): _size(size), _isDynamic(Dynamic)
+	Deque(int size, bool Dynamic = true) : _size(size), _isDynamic(Dynamic)
 	{
 		// pedimos _size bloques de memoria, cada uno de tamaño igual al tipo T del template.
 		InitialElement = new T[_size];
@@ -27,13 +27,13 @@ public:
 		_currentElements = 0;  // porque iniciamos con una Queue vacía.
 	}
 
-	~Queue()
+	~Deque()
 	{
 		delete[] InitialElement;  // liberamos la memoria pedida para nuestro arreglo de tipo T.
 	}
 
 	// Añade el elemento "element" en la posición Tail de la Queue, e incrementa el valor de Tail en 1.
-	void Enqueue(T element)
+	void EnqueueBack(T element)
 	{
 		if (Full() == true)
 		{
@@ -63,7 +63,7 @@ public:
 				// _top++; // incrementamos el tope en una unidad (_top++; es lo mismo que _top = _top + 1;)
 			}
 			// 
-			std::cout << "Queue llena" << '\n';
+			std::cout << "Deque llena" << '\n';
 		}
 
 		// Poner element en donde Tail nos diga.
@@ -79,26 +79,16 @@ public:
 		}
 
 		_currentElements++;
-
-		// PRIMERO, checamos si lo tenemos que ciclar
-		// if (_tail == _size)
-		// 	_tail = 0;
-
-
-		//_tail++;
-		// Y después aumentamos Tail en 1
-		// _tail++;
-		//_tail = _tail % _size;
 	}
 
 	// Quita el elemento de la posición Head de la Queue, e incrementa el valor de Head en 1.
-	void Dequeue()
+	void FrontDequeue()
 	{
 		// Antes de quitar elementos, hay que checar que sí hay al menos un elemento por quitar.
 		// IMPORTANTE.
 		if (Empty())
 		{
-			std::cout << "ERROR, tratando de quitar elementos de la Queue, pero no hay. Underflow." << '\n';
+			std::cout << "ERROR, tratando de quitar elementos de la Deque, pero no hay. Underflow." << '\n';
 			return;  // salimos de la función para evitar modificar otra cosa.
 		}
 
@@ -136,8 +126,6 @@ public:
 
 			}
 		}
-
-
 	}
 
 	// Regresa el valor del elemento en el índice Head de la Queue
