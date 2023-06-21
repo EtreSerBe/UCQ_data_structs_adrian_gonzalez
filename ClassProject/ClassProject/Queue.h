@@ -102,10 +102,11 @@ public:
 			return;  // salimos de la función para evitar modificar otra cosa.
 		}
 
+		// InitialElement[_head] = NULL;  // OPCIONAL
 		_head++;
 		// Primero ciclamos el valor de head
 		_head = _head % _size;
-		// InitialElement[_head] = NULL;  // OPCIONAL
+ 
 		// Incrementamos Head en 1
 		_currentElements--;
 
@@ -176,14 +177,15 @@ public:
 	}
 
 	// Imprimir // No es exactamente igual que la de Stack ni la de RawArray.
-	//void Print()
-	//{
-	//	for (int i = 0; i < _size; i++)
-	//	{
-	//		std::cout << InitialElement[i] << ", ";
-	//	}
-	//	std::cout << '\n';
-	//}
+	void Print()
+	{
+		// Cuántas veces debería imprimir letras? _currentElements;
+		for (int i = 0; i < _currentElements; i++)
+		{
+			std::cout << InitialElement[(i + _head) % _size] << ", ";
+		}
+		std::cout << '\n';
+	}
 
 
 };

@@ -281,6 +281,24 @@ int main()
     //}
     //test.~RawArray(); // lo haría en una llamada a delete*/
 
+
+    // 1000
+    // copiamos 999
+    // copiamos 988
+    // 997
+    //..,
+    // 1
+    // 1000 + 1 = 1001
+    // 999 + 2 = 1001
+    // 998 + 3 = 1001
+    // 1000/2
+    // 1001 * 500 = 500500
+    // n(n+1)/2 -> n^2 + n / 2, 
+    // se dice que tiene una complejidad Big 0 de n^2 (de operaciones)
+    // 100 -> 100^2
+    // 1000000 -> 1000000^2
+
+
     //test.RemoveLastElement();
     //test.RemoveLastElement();
     //test.Print();
@@ -324,6 +342,8 @@ int main()
     MyQueue.Enqueue('e');
     MyQueue.Enqueue('f');
 
+
+
     if (MyQueue.Full() == true)
     {
         std::cout << "la Queue está llena." << '\n';
@@ -333,6 +353,8 @@ int main()
 
     // Después, quitamos un elemento, y metemos otro nuevo, para probar la otra condición de Full()
     MyQueue.Dequeue();
+    MyQueue.Print();
+
     MyQueue.Enqueue('g');
     MyQueue.Enqueue('h');
 
@@ -342,6 +364,7 @@ int main()
     }
 
 
+    MyQueue.Print();
 
 
     // CÓDIGO PARA PROBAR LA CLASE DEQUE.
