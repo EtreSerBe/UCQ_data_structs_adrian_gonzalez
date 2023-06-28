@@ -377,6 +377,7 @@ int main()
 
     List<char> myList = List<char>();
     myList.PushBack('a');
+    myList.GetByValue('a');
 
     myList.PopFront();
 

@@ -1,5 +1,8 @@
 #pragma once
 
+#ifndef LIST
+#define LIST
+
 #include <iostream>
 
 template <typename T>
@@ -122,6 +125,72 @@ public:
 		size--;
 	}
 
+	// Insertar en el índice index
+
+	// Insertar el nodo x, después del nodo y pasado como parámetro
+	void InsertAfter(ListNode<T>* toBeInserted, ListNode<T>* existingNode)
+	{
+		// checar si existingNode tiene un nodo next.
+		if (existingNode->next != nullptr)
+		{
+			// si sí tiene, hay que ajustar los next correspondientes.
+			// [c] = existingNode->next;
+			toBeInserted->next = existingNode->next; // que el next de [b] apunte a [c]
+			// hay que tener cuidado con estas reconexiones de next para no perder la referencia a nadie.
+		}
+		existingNode->next = toBeInserted;  // que el next de [a] apunte a [b]
+	}
+
+	//void InsertList(ListNode<T>* listToBeInserted, ListNode<T>* existingNode)
+	//{
+	//	// checar si existingNode tiene un nodo next.
+	//	if (existingNode->next != nullptr)
+	//	{
+	//		// si sí tiene, hay que ajustar los next correspondientes.
+	//		// [c] = existingNode->next;
+	//		toBeInserted->next = existingNode->next; // que el next de [b] apunte a [c]
+	//		// hay que tener cuidado con estas reconexiones de next para no perder la referencia a nadie.
+	//	}
+	//	existingNode->next = toBeInserted;  // que el next de [a] apunte a [b]
+	//}
+
+	// Borra a este elemento x de la lista.
+	// MUY PROBABLEMENTE DEBERÍA SER PRIVADA
+	void DeleteNode(ListNode<T>* x)
+	{
+		// forzosamente tenemos que usar Predecessor para saber quién va antes de x
+		ListNode<T>* auxPredecessor = Predecessor(x);
+		// hay que checar que no sea nulo
+		if (auxPredecessor == nullptr)
+		{
+			// entonces es el primer nodo, solo tenemos que borrarlo y actualizar el first.
+			ListNode<T>* auxPointer = firstNode;
+			firstNode = firstNode->next;
+			delete auxPointer;
+			return;
+		}
+		
+		// si no es el primer elemento. conectamos al predecesor de x, con el sucesor de x.
+		auxPredecessor->next = x->next;
+		// y ya podemos borrar x.
+		delete x;
+	}
+
+	void DeleteByValue(T value)
+	{
+		ListNode<T>* toBeDeleted = GetByValue(T);
+		if (toBeDeleted == nullptr)
+			return;
+		DeleteNode(toBeDeleted);
+	}
+
+
+
+	// Insertar por valor (si están ordenados)
+	// a esta vamos a volver un poco después.
+	// if(currentNode->data < newNode->data && currentNode->next->data >= newNode->data)
+
+
 	// Función de búsqueda por valor T
 	ListNode<T>* GetByValue(T value)
 	{
@@ -131,7 +200,18 @@ public:
 			return nullptr; // índice no válido, regresa nullptr por defecto.
 		}
 
-		// INCOMPLETA.
+		ListNode<T>* auxPointer = firstNode;
+		while (auxPointer != nullptr)
+		{
+			// Checamos si este nodo, tiene el value que nos dieron como entrada.
+			if (auxPointer->data == value)
+			{
+				// entonces ya lo encontramos.
+				return auxPointer; // regresamos una referencia a este nodo
+			}
+			// si todavía no encontramos al del value requerido, solo nos vamos al siguiente nodo.
+			auxPointer = auxPointer->next;
+		}
 
 		std::cout << "error, no se encontró ningún nodo con value = " << value << '\n';
 		return nullptr; // No encontrado, regresa nullptr por defecto.
@@ -191,3 +271,4 @@ public:
 
 };
 
+#endif // LIST
