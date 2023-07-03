@@ -42,6 +42,9 @@
     <ClCompile Include="LQueue.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
+    <ClCompile Include="DList.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Array.h">
@@ -66,6 +69,9 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="LQueue.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="DList.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

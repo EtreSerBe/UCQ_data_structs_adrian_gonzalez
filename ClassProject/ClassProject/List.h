@@ -52,6 +52,11 @@ public:
 		// La lista es dueña de todos sus nodos, los nodos no son dueños de nadie.
 		// por lo tanto, aquí sí tendríamos que borrar los nodos.
 		// primero necesitamos los métodos de iteración para luego ahora sí poder borrar los nodos.
+		// este while dice: mientras todavía haya nodos dentro de esta lista.
+		while (firstNode != nullptr)
+		{
+			PopFront(); // quita el primer nodo.
+		}
 	}
 
 	void PushBack(T element)

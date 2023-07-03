@@ -130,6 +130,7 @@
     <ClCompile Include="Array.cpp" />
     <ClCompile Include="ClassProject.cpp" />
     <ClCompile Include="Deque.cpp" />
+    <ClCompile Include="DList.cpp" />
     <ClCompile Include="List.cpp" />
     <ClCompile Include="LQueue.cpp" />
     <ClCompile Include="LStack.cpp" />
@@ -140,6 +141,7 @@
   <ItemGroup>
     <ClInclude Include="Array.h" />
     <ClInclude Include="Deque.h" />
+    <ClInclude Include="DList.h" />
     <ClInclude Include="List.h" />
     <ClInclude Include="LQueue.h" />
     <ClInclude Include="LStack.h" />
