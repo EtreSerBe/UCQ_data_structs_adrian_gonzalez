@@ -13,6 +13,7 @@
 #include "Queue.h"
 #include "Deque.h"
 #include "List.h"
+#include "DList.h"
 // #include "../include/Array.h"
 
 
@@ -369,7 +370,7 @@ int main()
 
 
     // CÓDIGO PARA PROBAR LA CLASE DEQUE.
-    
+
 
 
 
@@ -380,6 +381,31 @@ int main()
     myList.GetByValue('a');
 
     myList.PopFront();
+
+
+    // Código para probar la Clase de Lista doblemente ligada
+
+    DList<char> myDList = DList<char>();
+    myDList.PushBack('a');
+    myDList.PushFront('b');
+
+    myDList.Print();
+
+    myDList.PopBack();
+    myDList.PopFront();
+
+    myDList.PopFront();
+
+    myDList.PushBack('c');
+    myDList.PushBack('d');
+    myDList.PushBack('e');
+
+    myDList.DeleteByValue('d');
+
+    myDList.Print();
+
+
+
 
 
 

@@ -9,6 +9,7 @@
 template <typename T>
 class DListNode
 {
+public:
 	DListNode(T in_data) : data(in_data)
 	{
 		prev = nullptr;
@@ -87,21 +88,7 @@ public:
 
 	void PushFront(T element)
 	{
-		// hacemos un nuevo nodo que va a contener a element.
-		DListNode<T>* newNode = new DListNode<T>(element);
-
-		// el prev del nuevo nodo tiene que apuntar al centinela
-		newNode->prev = sentinel;
-
-		// el next del nuevo apunta al que antes era el primer nodo
-		// sentinel->next es el nodo que antes era el primero.
-		newNode->next = sentinel->next;
-
-		// el prev del que antes era el primero ahora apunta al nuevo nodo
-		sentinel->next->prev = newNode;
-
-		// el next del centinela tiene que apuntar al nuevo nodo
-		sentinel->next = newNode;
+		InsertNodeAfter(element, sentinel);
 	}
 
 	void PopFront()
@@ -154,6 +141,20 @@ public:
 		return false;
 	}
 
+	// Inserta un nodo con el valor X (valueToInsert) después del nodo Y (priorNode)
+	void InsertNodeAfter(T valueToInsert, DListNode<T>* priorNode)
+	{
+		DListNode<T>* newNode = new DListNode<T>(valueToInsert);
+
+		newNode->prev = priorNode;
+
+		newNode->next = priorNode->next;
+
+		// priorNode->next sería el nodo "Z", porque va después del nodo "Y"
+		priorNode->next->prev = newNode;
+
+		priorNode->next = newNode;
+	}
 
 	DListNode<T>* GetByValue(T value)
 	{
@@ -164,6 +165,11 @@ public:
 		{
 			auxNode = auxNode->next;
 		}
+
+		// restablecemos el data de sentinel a NULL para mejor debug 
+		// es decir, para que sea obvio que es el centinela.
+		sentinel->data = NULL;
+
 		// tenemos que checar el porqué terminó
 		if (auxNode == sentinel)
 		{
@@ -171,6 +177,7 @@ public:
 			// std::cout << "no se encontró un nodo con valor: " << value << '\n';
 			return nullptr;
 		}
+
 		// si sí lo encontró, regresamos el nodo al que apunte auxNode.
 		return auxNode;
 
@@ -186,12 +193,23 @@ public:
 
 	void DeleteByValue(T value)
 	{
-		DListNode<T>* toBeDeleted = GetByValue(T);
+		DListNode<T>* toBeDeleted = GetByValue(value);
 		// checar que está ese nodo con valor T
 		if (toBeDeleted != nullptr)
 		{
 			DeleteNode(toBeDeleted);
 		}
+	}
+
+	void Print()
+	{
+		DListNode<T>* auxNode = sentinel->next;
+		while (auxNode != sentinel)
+		{
+			std::cout << auxNode->data << ", ";
+			auxNode = auxNode->next;
+		}
+		std::cout << '\n';
 	}
 
 };
