@@ -212,6 +212,19 @@ public:
 		std::cout << '\n';
 	}
 
+	//string operator <<
+	//{
+	//	std::string 
+	//	DListNode<T>* auxNode = sentinel->next;
+	//	while (auxNode != sentinel)
+	//	{
+	//		std::cout << auxNode->data << ", ";
+	//		auxNode = auxNode->next;
+	//	}
+	//	std::cout << '\n';
+
+	//}
+
 };
 
 #endif DLIST

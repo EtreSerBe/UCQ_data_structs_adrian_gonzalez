@@ -128,6 +128,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Array.cpp" />
+    <ClCompile Include="BinaryTree.cpp" />
     <ClCompile Include="ClassProject.cpp" />
     <ClCompile Include="Deque.cpp" />
     <ClCompile Include="DList.cpp" />
@@ -137,9 +138,11 @@
     <ClCompile Include="Queue.cpp" />
     <ClCompile Include="Stack.cpp" />
     <ClCompile Include="TArray.cpp" />
+    <ClCompile Include="Triage.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Array.h" />
+    <ClInclude Include="BinaryTree.h" />
     <ClInclude Include="Deque.h" />
     <ClInclude Include="DList.h" />
     <ClInclude Include="List.h" />
@@ -148,6 +151,7 @@
     <ClInclude Include="Queue.h" />
     <ClInclude Include="Stack.h" />
     <ClInclude Include="TArray.h" />
+    <ClInclude Include="Triage.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

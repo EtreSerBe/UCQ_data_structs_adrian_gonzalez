@@ -14,7 +14,9 @@
 #include "Deque.h"
 #include "List.h"
 #include "DList.h"
+#include "BinaryTree.h"
 // #include "../include/Array.h"
+// #include "Triage.h"
 
 
 
@@ -405,10 +407,19 @@ int main()
     myDList.Print();
 
 
+    // DListNode
 
-
-
-
+    BinaryTree<int> myBT = BinaryTree<int>();
+    myBT.Insert(5);
+    myBT.Insert(3);
+    myBT.Insert(8);
+    myBT.Insert(2);
+    myBT.Insert(4);
+    myBT.Insert(7);
+    myBT.Insert(9);
+ 
+    myBT.InOrder(myBT.GetRoot());
+    myBT.PreOrder(myBT.GetRoot());
 
     //// Hay que liberar memoria del RawArray
     //// test.~RawArray();
