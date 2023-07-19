@@ -38,6 +38,10 @@ public:
 	{
 		// Aquí es donde sí tenemos que destruir los nodos restantes
 		// PENDIENTE.
+		while (root != nullptr)
+		{
+			DeleteNode(root);
+		}
 	}
 
 	Node<T>* GetRoot()
@@ -236,4 +240,76 @@ public:
 		}
 		// Si no, no se hace nada, y solo se sale de la función.
 	}
+
+	void Transplant(Node<T>* in_u, Node<T>* in_v)
+	{
+		if (in_u->parent == nullptr)
+		{
+			// Entonces U es el nodo raíz. Actualizamos la raíz del árbol
+			root = in_v;
+		}
+		else if (in_u == in_u->parent->left)
+		{
+			// Si U es el hijo izquierdo de su padre, 
+			// le dices al padre que ahora su hijo izquierdo 
+			// será V
+			in_u->parent->left = in_v;
+		}
+		else
+		{
+			// Si no era el hijo izquierdo, entonces era el derecho
+			// y hay que actualizarlo de U a V
+			in_u->parent->right = in_v;
+		}
+		if (in_v != nullptr)
+		{
+			// Si V sí es un nodo, pone que el padre de V
+			// es el mismo que el padre de U
+			in_v->parent = in_u->parent;
+		}
+	}
+
+	void DeleteNode(Node<T>* in_z)
+	{
+
+		if (in_z->left == nullptr)
+		{
+			// Si el hijo izquierdo de Z es nullptr,
+			// entonces remplazamos Z por su hijo derecho.
+			Transplant(in_z, in_z->right);
+		}
+		else if (in_z->right == nullptr)
+		{
+			// Si el hijo derecho de Z es nullptr,
+			// entonces remplazamos Z por su hijo izquierdo.
+			Transplant(in_z, in_z->left);
+		}
+		else
+		{ 
+			// Todo esto es para el caso 3, que es el complicado del Delete
+			// Primero, obtenemos el sucesor de Z
+			Node<T>* Y = MinimumFromNode(in_z->right);
+			// Checamos que Y no sea el sucesor inmediato a la derecha
+			if (Y != in_z->right)
+			{
+				// Entonces este es el caso engorroso.
+				Transplant(Y, Y->right);
+				// Después, le decimos a Y que su derecha es ahora la 
+				// derecha del Nodo Z que estamos quitando.
+				Y->right = in_z->right;
+				// Y le decimos al hijo derecho de Z que ahora su padre debe ser Y
+				Y->right->parent = Y;
+			}
+			// Mover al sucesor al espacio de Z (al que vamos a quitar)
+			Transplant(in_z, Y);
+			// Quitarle el subárbol izquierdo a Z y dárselo a Y
+			Y->left = in_z->left;
+			// Decirle al subárbol izquierdo de Y, que ponga a Y como su padre
+			Y->left->parent = Y;
+		}
+
+		// finalmente, sin importar cuál caso de Delete se usó, es necesario borrar al nodo Z.
+		delete in_z;
+	}
+
 };
