@@ -2,6 +2,7 @@
 
 #include <iostream>
 // BinaryTree::Node
+#include <stack>
 
 
 template<typename T>
@@ -186,9 +187,49 @@ public:
 	}
 
 	// Aquí iría la función Predecessor()
-	// Node<T>* Predecessor(Node<T>* in_x)
-	//{}
+	Node<T>* Predecessor(Node<T>* in_x)
+	{
+		if (in_x->left != nullptr)
+		{
+			// entonces sí tiene un subárbol derecho. Necesitamos el nodo más chico de dicho subárbol derecho
+			return MaximumFromNode(in_x->left);
+		}
+		else
+		{
+			// empezamos con el padre del nodo al cual queremos encontrar su sucesor.
+			Node<T>* current = in_x;  // current es 9
+			Node<T>* temp_parent = in_x->parent; // temp parent es 8
+			while (temp_parent != nullptr && temp_parent->left == current)
+			{
+				// Si seguimos siendo el hijo derecho de nuestro padre, todavía no vamos a romper este while.
+				current = current->parent; // ahora current es 5
+				temp_parent = current->parent; // ahora el padre de current es nullptr
+			}
+			return temp_parent; // se regresa el nodo nullptr
+		}
+	}
 
+	void InOrderInverseIterative()
+	{
+		Node<T>* max = Maximum();
+		while (max != nullptr)
+		{
+			std::cout << max->data << ", ";
+			max = Predecessor(max);
+		}
+		std::cout << "\n";
+	}
+
+	void InOrderIterative()
+	{
+		Node<T>* min = Minimum();
+		while (min != nullptr)
+		{
+			std::cout << min->data << ", ";
+			min = Sucessor(min);
+		}
+		std::cout << "\n";
+	}
 
 	/*
 	*	In Order
@@ -222,6 +263,43 @@ public:
 			PreOrder(in_x->right);
 		}
 		// Si no, no se hace nada, y solo se sale de la función.
+	}
+
+	void PreOrderIterative()
+	{
+		// stack donde se van a ir metiendo los elementos.
+		std::stack<Node<T>*> tempStack = stack<Node<T>*>();
+
+		// inmediatamente metes la root
+		tempStack.push(root);
+
+		// mientras haya nodos en la stack (haya nodos por visitar), vas a sacar el del top
+		while (tempStack.empty() == false)
+		{
+			Node<T>* currentNode = tempStack.top();
+			tempStack.pop();  // lo sacamos porque ya no lo vamos a necesitar.
+
+			// imprimir
+			std::cout << currentNode->data << ", ";
+
+
+			// OJO: a diferencia del PreOrderRecursivo, aquí se mete primero el derecho porque estamos usando una pila
+			// metes su hijo derecho (si hay)
+			if (currentNode->right != nullptr)
+			{
+				tempStack.push(currentNode->right);
+			}
+
+			// metes su hijo izquierdo (si hay)
+			if (currentNode->left!= nullptr)
+			{
+				tempStack.push(currentNode->left);
+			}
+		}
+
+
+
+		
 	}
 
 	/*

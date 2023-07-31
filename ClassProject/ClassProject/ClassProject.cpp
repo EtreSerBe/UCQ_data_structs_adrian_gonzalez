@@ -18,6 +18,9 @@
 // #include "../include/Array.h"
 // #include "Triage.h"
 
+#include <vector>
+#include <list>
+using namespace std;
 
 
 #define MY_NULL 0
@@ -250,6 +253,62 @@ void ParametrosPorValorYPorReferencia()
 // En Java, main es de tipo "void", pues no retorna ningún valor.
 int main()
 {
+
+    //int myInt;
+    //unsigned int myUInt;
+
+    //char myChar;                //8 bits, 2^8 [256] -> 1 bit para el signo, y 7 para el número [-127, +128]
+    //// la representación de -127 es [1111 1111], la representación de +127 es [0111 1111]
+    //// la representación de +1 es [0000 0001], entonces la de -1 es [1000 0001]
+    //[129]
+    //unsigned char myUChar;
+
+    /*unsigned char myArray[256] = { 0 };
+
+    for (unsigned char i = 0; i < 255; i++)
+    {
+        myArray[i] = i;
+    }
+
+    char index = -1;
+    std::cout << myArray[index];*/
+
+
+    vector<char> myVec = vector<char>();
+    myVec.push_back('a');
+    myVec.push_back('b');
+    myVec.push_back('c');
+
+    char myChar = myVec.front();
+    char myCharAt = myVec.at(1);
+    char myCharCorchetes = myVec[2];
+    cout << myChar << endl;
+
+
+    list<int> myList = list<int>();
+    myList.push_back(1);
+    myList.push_back(2);
+    myList.push_back(3);
+    myList.push_back(4);
+
+    myChar = myList.front();
+
+    for (list<int>::iterator it = myList.begin(); it != myList.end(); ++it )
+    {
+        cout << *it << ", ";
+    }
+
+    for (auto it = myList.begin(); it != myList.end(); ++it)
+    {
+        cout << *it << ", ";
+    }
+
+
+    // ''  // 1 caracter
+    // ""  // 1 o más caracteres
+
+    // string "asdf" + '\0'
+
     //TArray<float> myTArray = TArray<float>(10);
     //myTArray.Init(12.7f);
     //myTArray.Print();
@@ -378,11 +437,11 @@ int main()
 
     //
 
-    List<char> myList = List<char>();
+    /*List<char> myList = List<char>();
     myList.PushBack('a');
     myList.GetByValue('a');
 
-    myList.PopFront();
+    myList.PopFront();*/
 
 
     // Código para probar la Clase de Lista doblemente ligada
@@ -421,8 +480,16 @@ int main()
     myBT.InOrder(myBT.GetRoot());
     myBT.PreOrder(myBT.GetRoot());
 
+    std::cout << endl;
+    myBT.InOrderInverseIterative();
+
+    myBT.InOrderIterative();
+
     //// Hay que liberar memoria del RawArray
     //// test.~RawArray();
+
+
+
 
     return 0;
 }
