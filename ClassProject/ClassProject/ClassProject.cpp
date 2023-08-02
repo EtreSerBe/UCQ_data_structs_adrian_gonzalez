@@ -20,6 +20,7 @@
 
 #include <vector>
 #include <list>
+#include <map>
 using namespace std;
 
 
@@ -253,6 +254,23 @@ void ParametrosPorValorYPorReferencia()
 // En Java, main es de tipo "void", pues no retorna ningún valor.
 int main()
 {
+
+    map<string, string> myMap = map<string, string>();
+    myMap["hola"] = "mundo";
+    myMap["hola"] = "A todos";
+    myMap["32"] = "hello";
+    myMap["43"] = "hello";
+
+    for (auto it = myMap.begin(); it != myMap.end(); ++it)
+    {
+        cout << (*it).first << " -> " << (*it).second <<  endl;
+    }
+
+
+
+
+    cout << endl;
+
 
     //int myInt;
     //unsigned int myUInt;

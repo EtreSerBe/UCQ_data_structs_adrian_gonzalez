@@ -268,7 +268,7 @@ public:
 	void PreOrderIterative()
 	{
 		// stack donde se van a ir metiendo los elementos.
-		std::stack<Node<T>*> tempStack = stack<Node<T>*>();
+		std::stack<Node<T>*> tempStack = std::stack<Node<T>*>();
 
 		// inmediatamente metes la root
 		tempStack.push(root);
